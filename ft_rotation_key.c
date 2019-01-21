@@ -14,23 +14,23 @@
 
 void	ft_rotation_key(int key, t_map *map)
 {
-	if (key == 91 || key == 84)
+	if (key == 12 || key == 13)
 	{
-		if (key == 91)
+		if (key == 12)
 			map->alpha += 5;
 		else
 			map->alpha -= 5;
 	}
-	if (key == 86 || key == 88)
+	if (key == 14 || key == 15)
 	{
-		if (key == 86)
+		if (key == 14)
 			map->beta += 5;
 		else
 			map->beta -= 5;
 	}
-	if (key == 89 || key == 92)
+	if (key == 17 || key == 16)
 	{
-		if (key == 89)
+		if (key == 17)
 			map->delta += 5;
 		else
 			map->delta -= 5;

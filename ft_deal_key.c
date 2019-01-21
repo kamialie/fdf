@@ -24,7 +24,7 @@ static void	ft_projection_key(int key, t_map *map)
 
 static void	ft_zoom_key(int key, t_map *map)
 {
-	if (key == 69)
+	if (key == 33)
 		map->zoom += 1;
 	else
 		map->zoom -= 1;
@@ -32,7 +32,7 @@ static void	ft_zoom_key(int key, t_map *map)
 
 static void	ft_z_key(int key, t_map *map)
 {
-	if (key == 67)
+	if (key == 24)
 		map->z += 1;
 	else
 		map->z -= 1;
@@ -54,14 +54,14 @@ int			ft_deal_key(int key, t_map *map)
 {
 	if (key == 53)
 		ft_free_list(map->head, 0);
-	else if (key == 91 || key == 84 || key == 86
-			|| key == 88 || key == 89 || key == 92)
+	else if (key == 12 || key == 13 || key == 14
+			|| key == 15 || key == 16 || key == 17)
 		ft_rotation_key(key, map);
 	else if (key == 18 || key == 19 || key == 20)
 		ft_projection_key(key, map);
-	else if (key == 69 || key == 78)
+	else if (key == 33 || key == 34)
 		ft_zoom_key(key, map);
-	else if (key == 67 || key == 75)
+	else if (key == 24 || key == 27)
 		ft_z_key(key, map);
 	else if (key == 126 || key == 125 || key == 123 || key == 124)
 		ft_move_key(key, map);
