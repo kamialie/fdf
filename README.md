@@ -1,2 +1,2 @@
 # fdf
-First graphical project
+[README in construction]
