@@ -10,45 +10,63 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXE = fdf
+NAME = fdf
 
-LIB = libfdf.a
+LIB_DIR = libft
+
+LIB = $(LIB_DIR)/libft.a
 
 MLX = minilibx_macos/libmlx.a
 
-SRC = main.c ft_file_to_list.c ft_image_man.c ft_draw_map.c ft_draw_line.c ft_rotation.c ft_deal_key.c ft_free_list.c ft_gradient.c ft_rotation_key.c ft_error.c ft_get_limit.c ft_spectrum_key.c
+MLX_DIR = minilibx_macos
 
-OBJ = $(SRC:.c=.o) 
+SRC = main.c\
+	ft_file_to_list.c\
+	ft_image_man.c\
+	ft_draw_map.c\
+	ft_draw_line.c\
+	ft_rotation.c\
+	ft_deal_key.c\
+	ft_free_list.c\
+	ft_gradient.c\
+	ft_rotation_key.c\
+	ft_error.c\
+	ft_get_limit.c\
+	ft_spectrum_key.c
 
-LIB_SRC = $(addprefix libft/, $(shell ls libft | grep .c))
+SRC_DIR = sources
 
-LIB_OBJ = $(LIB_SRC:.c=.o)
+OBJ_DIR = object
+
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 FLAGS = -Wall -Wextra -Werror
 
-all: $(EXE)
+all: $(NAME)
 
-$(EXE): $(OBJ) $(LIB) $(MLX)
-	gcc $(FLAGS) -o $(EXE) $(OBJ) $(LIB) -L minilibx_macos -l mlx -framework OpenGL -framework Appkit
+$(NAME): $(LIB) $(OBJ) $(MLX)
+	gcc $(FLAGS) -I includes -o $(NAME) $(OBJ) $(LIB) $(MLX) -framework OpenGL -framework Appkit
 
-.c.o:
-	gcc $(FLAGS) -Ilibft -o $@ -c $<
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-$(LIB): $(LIB_OBJ)
-	@ar rc $(LIB) $(LIB_OBJ)
-	@ranlib $(LIB)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	gcc $(FLAGS) -I includes -o $@ -c $<
+
+$(LIB):
+	@make -C $(LIB_DIR)
 
 $(MLX):
-	cd minilibx_macos && make
+	@make -C $(MLX_DIR)
 
 clean:
-	/bin/rm -f $(OBJ)
-	/bin/rm -f $(LIB_OBJ)
+	@/bin/rm -rf $(OBJ_DIR)
+	@make -C $(LIB_DIR) clean
 
 fclean: clean
 	/bin/rm -f $(EXE)
-	/bin/rm -f $(LIB)
-	cd minilibx_macos && make clean
+	@make -C $(LIB_DIR) fclean
+	@make -C $(MLX_DIR) clean
 
 re: fclean all
 

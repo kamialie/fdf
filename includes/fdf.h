@@ -15,8 +15,8 @@
 
 # include <fcntl.h>
 # include <math.h>
-# include "libft/libft.h"
-# include "minilibx_macos/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx_macos/mlx.h"
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 1200
