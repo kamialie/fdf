@@ -89,6 +89,9 @@ typedef struct	s_map
 	int				z_min;
 	int				x_shift;
 	int				y_shift;
+	int				mouse_click;
+	int				mouse_x;
+	int				mouse_y;
 	struct s_lst	*head;
 	struct s_mlx	*mlx;
 }				t_map;
@@ -114,6 +117,9 @@ typedef struct	s_val
 
 t_lst			*ft_file_to_lst(t_map *map, int fd);
 int				ft_deal_key(int key, t_map *map);
+int				ft_mouse_movement(int x, int y, t_map *map);
+int				ft_mouse_release(int button, int x, int y, t_map *map);
+int				ft_mouse_press(int button, int x, int y, t_map *map);
 void			ft_rotation_key(int key, t_map *map);
 void			ft_spectrum_key(int key, t_map *map);
 void			ft_free_list(t_lst *head, int flag);

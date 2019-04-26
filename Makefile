@@ -27,6 +27,7 @@ SRC = main.c\
 	ft_draw_line.c\
 	ft_rotation.c\
 	ft_deal_key.c\
+	ft_mouse.c\
 	ft_free_list.c\
 	ft_gradient.c\
 	ft_rotation_key.c\
@@ -50,7 +51,7 @@ $(NAME): $(LIB) $(OBJ) $(MLX)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/fdf.h | $(OBJ_DIR)
 	gcc $(FLAGS) -I includes -o $@ -c $<
 
 $(LIB):

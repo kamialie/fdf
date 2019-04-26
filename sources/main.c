@@ -31,6 +31,9 @@ t_map	*ft_map_init(int fd)
 	map->z = 2;
 	map->x_shift = 0;
 	map->y_shift = 0;
+	map->mouse_click = 0;
+	map->mouse_x = 0;
+	map->mouse_y = 0;
 	map->head = ft_file_to_lst(map, fd);
 	map->z_max = ft_get_max_z(map->head);
 	map->z_min = ft_get_min_z(map->head);
@@ -58,6 +61,9 @@ int		main(int args, char *argv[])
 			&mlx.img.bpp, &mlx.img.size_line, &mlx.img.endian);
 		ft_create_image(map, mlx);
 		mlx_hook(mlx.win_ptr, 2, 0, &ft_deal_key, map);
+		mlx_hook(mlx.win_ptr, 4, 0, &ft_mouse_press, map);
+		mlx_hook(mlx.win_ptr, 5, 0, &ft_mouse_release, map);
+		mlx_hook(mlx.win_ptr, 6, 0, &ft_mouse_movement, map);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	return (0);
