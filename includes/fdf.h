@@ -26,6 +26,28 @@
 # define MAX(len_y, len_x) ((len_y) > (len_x) ? (len_y) : (len_x))
 # define RADIAN(degree) (degree * (M_PI / 180.0))
 
+# define ARROW_UP 126
+# define ARROW_DOWN 125
+# define ARROW_LEFT 123
+# define ARROW_RIGHT 124
+# define Q 12
+# define W 13
+# define E 14
+# define A 0
+# define S 1
+# define D 2
+# define Z 6
+# define X 7
+# define MINUS 27
+# define PLUS 24
+# define P_1 18
+# define P_2 19
+# define P_3 20
+# define S_1 21
+# define S_2 22
+# define S_3 23
+# define ESC 53
+
 typedef struct	s_img
 {
 	void		*img_ptr;

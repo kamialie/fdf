@@ -21,13 +21,13 @@ void		ft_create_image(t_map *map, t_mlx mlx)
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 20, 20, 0xFFFFFF,
 			"motion up/down/left/right: arrows");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 20, 40, 0xFFFFFF,
-			"x axis rotatio:            4 / 6 numpad");
+			"x axis rotatio:            W / S");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 20, 60, 0xFFFFFF,
-			"y axis rotation:           2 / 8 numpad");
+			"y axis rotation:           A / D");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 20, 80, 0xFFFFFF,
-			"z axis rotation:           7 / 9 numpad");
+			"z axis rotation:           Q / E");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 450, 20, 0xFFFFFF,
-			"increase/decrease z:    * or /");
+			"increase/decrease z:    Z or X");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 450, 40, 0xFFFFFF,
 			"zoom in/out:            + / - numpad");
 	mlx_string_put(mlx.mlx_ptr, mlx.win_ptr, 450, 60, 0xFFFFFF,

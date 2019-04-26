@@ -14,9 +14,9 @@
 
 static void	ft_projection_key(int key, t_map *map)
 {
-	if (key == 18)
+	if (key == P_1)
 		map->projection = (map->projection != 1 ? 1 : 0);
-	else if (key == 19)
+	else if (key == P_2)
 		map->projection = (map->projection != 2 ? 2 : 0);
 	else
 		map->projection = 0;
@@ -24,7 +24,7 @@ static void	ft_projection_key(int key, t_map *map)
 
 static void	ft_zoom_key(int key, t_map *map)
 {
-	if (key == 33)
+	if (key == PLUS)
 		map->zoom += 1;
 	else
 		map->zoom -= 1;
@@ -32,7 +32,7 @@ static void	ft_zoom_key(int key, t_map *map)
 
 static void	ft_z_key(int key, t_map *map)
 {
-	if (key == 24)
+	if (key == Z)
 		map->z += 1;
 	else
 		map->z -= 1;
@@ -40,11 +40,11 @@ static void	ft_z_key(int key, t_map *map)
 
 static void	ft_move_key(int key, t_map *map)
 {
-	if (key == 126)
+	if (key == ARROW_UP)
 		map->y_shift -= 10;
-	else if (key == 125)
+	else if (key == ARROW_DOWN)
 		map->y_shift += 10;
-	else if (key == 123)
+	else if (key == ARROW_LEFT)
 		map->x_shift -= 10;
 	else
 		map->x_shift += 10;
@@ -52,20 +52,20 @@ static void	ft_move_key(int key, t_map *map)
 
 int			ft_deal_key(int key, t_map *map)
 {
-	if (key == 53)
+	if (key == ESC)
 		ft_free_list(map->head, 0);
-	else if (key == 12 || key == 13 || key == 14
-			|| key == 15 || key == 16 || key == 17)
+	else if (key == W || key == S || key == A
+			|| key == D || key == Q || key == E)
 		ft_rotation_key(key, map);
-	else if (key == 18 || key == 19 || key == 20)
+	else if (key == P_1 || key == P_2 || key == P_3)
 		ft_projection_key(key, map);
-	else if (key == 33 || key == 34)
+	else if (key == MINUS || key == PLUS)
 		ft_zoom_key(key, map);
-	else if (key == 24 || key == 27)
+	else if (key == Z || key == X)
 		ft_z_key(key, map);
-	else if (key == 126 || key == 125 || key == 123 || key == 124)
+	else if (key == ARROW_DOWN || key == ARROW_UP || key == ARROW_LEFT || key == ARROW_RIGHT)
 		ft_move_key(key, map);
-	else if (key == 23 || key == 22 || key == 26)
+	else if (key == S_1 || key == S_2 || key == S_3)
 		ft_spectrum_key(key, map);
 	else
 		return (0);
