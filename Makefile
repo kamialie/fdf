@@ -6,7 +6,7 @@
 #    By: rgyles <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/09 14:41:20 by rgyles            #+#    #+#              #
-#    Updated: 2019/01/20 21:18:59 by rgyles           ###   ########.fr        #
+#    Updated: 2019/04/27 18:51:22 by rgyles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,18 +40,18 @@ OBJ_DIR = object
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -I includes
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ) $(MLX)
-	gcc $(FLAGS) -I includes -o $(NAME) $(OBJ) $(LIB) $(MLX) -framework OpenGL -framework Appkit
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB) $(MLX) -framework OpenGL -framework Appkit
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	gcc $(FLAGS) -I includes -o $@ -c $<
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/fdf.h | $(OBJ_DIR)
+	gcc $(FLAGS) -o $@ -c $<
 
 $(LIB):
 	@make -C $(LIB_DIR)
@@ -64,7 +64,7 @@ clean:
 	@make -C $(LIB_DIR) clean
 
 fclean: clean
-	/bin/rm -f $(EXE)
+	/bin/rm -f $(NAME)
 	@make -C $(LIB_DIR) fclean
 	@make -C $(MLX_DIR) clean
 
